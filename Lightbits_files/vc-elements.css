@@ -1,0 +1,212 @@
+@charset "UTF-8";
+.vc-site-width {
+  max-width: 1170px;
+  margin: auto !important;
+}
+
+.fade-in-on-scroll {
+  padding: 0 90px;
+  text-align: center;
+  margin-bottom: 75px !important;
+  visibility: hidden;
+  transform: translateY(100px);
+  transition: 0.5s all ease;
+}
+.fade-in-on-scroll.come-in {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+}
+
+.vc-hovering-box {
+  padding: 0 90px;
+  text-align: center;
+  margin-bottom: 75px !important;
+  background-color: #fff;
+  border-top: 7px solid #ba9673;
+  padding-top: 52px;
+  padding-bottom: 70px;
+  position: relative;
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.3);
+}
+.vc-hovering-box h2 {
+  color: #ba9673;
+  font-size: 36px;
+  font-weight: 300;
+}
+
+.vc-icon-box {
+  min-height: 220px;
+  background: #fff;
+  border-bottom: 11px solid #ba9673;
+  display: inline-block;
+  margin: -4px;
+  width: 100%;
+  padding: 5px;
+  padding-top: 47px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.vc-icon-box a {
+  margin-bottom: 25px;
+}
+.vc-icon-box a img {
+  height: 63px;
+  margin-bottom: 25px;
+}
+.vc-icon-box p {
+  font-size: 15px;
+  color: #000;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 1px;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.vc-text-module h1,
+.vc-text-module h2,
+.vc-text-module h3,
+.vc-text-module h4,
+.vc-text-module h5,
+.vc-text-module h6 {
+  color: #ba9673;
+  font-size: 38px;
+  font-weight: 300;
+}
+.vc-text-module h2 {
+  font-size: 36px;
+  padding-bottom: 20px;
+}
+.vc-text-module h4 {
+  font-size: 34px;
+}
+.vc-text-module h5 {
+  font-size: 32px;
+}
+.vc-text-module h5 {
+  font-size: 30px;
+}
+.vc-text-module ul li {
+  margin-bottom: 30px;
+  margin-left: 10px;
+  padding-left: 15px;
+}
+.vc-text-module ul li::before {
+  content: "•";
+  color: #ba9673;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.5em;
+  margin-left: -1.5em;
+}
+
+.vc-custom-button {
+  border-radius: 20px;
+  padding: 10px 25px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+}
+.vc-custom-button.primary {
+  background: #281528;
+  border: 1px solid #281528;
+  color: #ba9673;
+}
+.vc-custom-button.primary:hover {
+  background: transparent;
+  color: #281528;
+}
+.vc-custom-button.secondary {
+  background: #ba9673;
+  border: 1px solid #ba9673;
+  color: #281528;
+}
+.vc-custom-button.secondary:hover {
+  background: transparent;
+  color: #ba9673;
+}
+.vc-custom-button.terciary {
+  color: #ba9673;
+  background: transparent;
+  border: 1px solid #ba9673;
+}
+.vc-custom-button.terciary:hover {
+  color: #fff;
+  background: #ba9673;
+}
+
+.custom-one-button-container.text-left {
+  text-align: left;
+}
+.custom-one-button-container.text-center {
+  text-align: center;
+}
+.custom-one-button-container.text-right {
+  text-align: right;
+}
+
+.custom-button-container.button-alignment-left {
+  text-align: left;
+}
+.custom-button-container.button-alignment-center {
+  text-align: center;
+}
+.custom-button-container.button-alignment-right {
+  text-align: right;
+}
+
+.lightbox-container .popup_form .poupform_content {
+  text-align: left;
+}
+.lightbox-container .popup_form .poupform_content .lightbox-popup-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding: 0;
+}
+.lightbox-container .popup_form .poupform_content form textarea {
+  padding-top: 10px;
+  padding-left: 14px;
+  width: 100%;
+  margin-top: 30px;
+}
+.lightbox-container .popup_form .poupform_content form input[type=submit] {
+  padding: 0;
+}
+
+.vc-user-block {
+  text-align: center;
+}
+.vc-user-block a {
+  border: none;
+  color: #000;
+  text-decoration: none;
+}
+.vc-user-block a:hover {
+  background: transparent;
+  color: #000;
+}
+.vc-user-block .member-image {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #ba9673;
+  border-radius: 50%;
+  padding: 5px;
+  margin: auto;
+  overflow: hidden;
+}
+.vc-user-block .member-image img {
+  width: 100%;
+  border-radius: 100%;
+}
+.vc-user-block h3 {
+  margin: 1rem auto;
+}
+.vc-user-block h4 {
+  margin: 1rem auto;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=vc-elements.css.map */

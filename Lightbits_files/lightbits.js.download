@@ -1,0 +1,638 @@
+jQuery(document).ready(function(){
+    /* Creer job tabs */
+    jQuery('.region ').on('click', function(){
+        var thisreg = jQuery(this).attr('data-regname');
+        jQuery('.region').removeClass('active');
+        jQuery(this).addClass('active');
+        jQuery('.job_link').fadeOut();
+        jQuery('.job_link.' + thisreg).fadeIn();
+        // if(jQuery(this).hasClass('us')){
+        //     jQuery('.job_link.us').fadeIn();
+        //     jQuery('.job_link.israel').fadeOut();
+        // } else {
+        //     jQuery('.job_link.us').fadeOut();
+        //     jQuery('.job_link.israel').fadeIn();
+        // }
+    });
+
+    jQuery('.job_cat ').on('click', function(){
+        jQuery('.job_cat').removeClass('active');
+        jQuery(this).addClass('active');
+        var catt = jQuery(this).attr('data-cat');
+        jQuery('.job_content_item ').removeClass('active');
+        jQuery('.job_content_item.' + catt).addClass('active');
+    });
+
+
+    $('#upload').on('change', function(){
+        var fileName = $(this).val();
+        var output = fileName.split("\\").pop();
+        $('.file_name_').text(output);
+    });
+
+    /* Home page */
+
+    if(jQuery('.home').length > 0 ){
+
+        jQuery('.testimonial_items').owlCarousel({
+            loop:true,
+            nav:true,
+            singleItem:true,
+            items:1,
+            slideSpeed : 300,
+        });
+
+    }
+
+
+    if(
+      jQuery('.home').length > 0 || 
+      jQuery('.page-template-page-product').length > 0  || 
+      jQuery('.page-template-page-creer').length > 0 || 
+      jQuery('.post-type-archive-videos').length > 0){
+        Shadowbox.init({
+            language: 'en',
+            players: ['img', 'html', 'iframe', 'qt', 'wmp', 'swf', 'flv']
+        });
+    }
+    if(
+      jQuery('.home').length > 0 || 
+      jQuery('.page-template-page-product').length > 0){
+        
+        function owl(){
+            if(jQuery(window).width() <= 767){
+                if (jQuery("#owl-demo").hasClass("owl-carousel")) {
+                    return false;
+                }
+                else{
+                    jQuery('#owl-demo').addClass('owl-carousel')
+                    jQuery('#owl-demo').addClass('owl-theme')
+
+                    var $owl = jQuery('#owl-demo.owl-carousel');
+
+                    $owl.children().each( function( index ) {
+                        jQuery(this).attr( 'data-position', index ); // NB: .attr() instead of .data()
+                    });
+
+                    $owl.owlCarousel({
+                        singleItem:true,
+                        loop:true,
+                        margin:20,
+                        items: 2,
+                        nav:true,
+                        dots:true,
+                        center:true
+                    });
+
+                    jQuery(document).on('click', '.owl-item>div', function() {
+                        $owl.trigger('to.owl.carousel', jQuery(this).data( 'position' ) ); 
+                    });
+
+                }
+
+            }
+            else{
+                if(jQuery("#owl-demo").children().hasClass('owl-stage-outer'))
+                {
+                    jQuery("#owl-demo").trigger('destroy.owl.carousel').removeClass('owl-carousel owl-loaded owl-theme');
+                    jQuery("#owl-demo").find('.owl-stage-outer').children().unwrap();
+                }
+                else{
+                    return false;   
+                }
+            }
+        }
+        jQuery(window).resize(owl);
+        jQuery(window).ready(owl);
+
+        function owl2(){
+            if(jQuery(window).width() <= 767){
+                if (jQuery("#owl-demo2").hasClass("owl-carousel")) {
+                    return false;
+                }
+                else{
+                    jQuery('#owl-demo2').addClass('owl-carousel')
+                    jQuery('#owl-demo2').addClass('owl-theme')
+
+                    var $owl = jQuery('#owl-demo2.owl-carousel');
+
+                    $owl.children().each( function( index ) {
+                        jQuery(this).attr( 'data-position', index ); // NB: .attr() instead of .data()
+                    });
+
+                    $owl.owlCarousel({
+                        singleItem:true,
+                        loop:true,
+                        margin:20,
+                        items: 2,
+                        nav:true,
+                        dots:true,
+                        center:true
+                    });
+
+                    jQuery(document).on('click', '.owl-item>div', function() {
+                        $owl.trigger('to.owl.carousel', jQuery(this).data( 'position' ) ); 
+                    });
+
+                }
+
+            }
+            else{
+                if(jQuery("#owl-demo2").children().hasClass('owl-stage-outer'))
+                {
+                    jQuery("#owl-demo2").trigger('destroy.owl.carousel').removeClass('owl-carousel owl-loaded owl-theme');
+                    jQuery("#owl-demo2").find('.owl-stage-outer').children().unwrap();
+                }
+                else{
+                    return false;   
+                }
+            }
+        }
+        jQuery(window).resize(owl2);
+        jQuery(window).ready(owl2);
+
+
+    }
+    /* Popup */
+    jQuery(document).on('click','.section_10 a:not(.no_pop)',function(){
+        jQuery('.popup_form').addClass('active');
+    });
+
+    jQuery(document).on('click','.demo-btn',function(){
+        jQuery('.popup_form.demo').addClass('active');
+    });
+
+    jQuery(document).on('click','.popup_form .poupform_content a.close',function(){
+        jQuery('.popup_form').removeClass('active');
+    });
+
+    jQuery(document).on('click','.thakyou_close',function(){
+
+        jQuery('.thankyou_popup').removeClass('active');
+        /*jQuery('.popup_form .poupform_content form input').val('');*/
+    });
+
+    /* error */
+    if(jQuery('.home').length > 0 || jQuery('.contact_page').length > 0 || jQuery('.single-position').length > 0 || jQuery('.page-template-page-product').length > 0){
+        // jQuery(".poupform_content form,.contact_form form").validate({
+            // rules: {
+            //     Name: {
+            //         required: true,
+            //     },
+            //     email: {
+            //         required: true,
+            //     }
+            // },
+            // messages: {
+            //     Name: "*Please enter your name",
+            //     email: "*Please enter your email address",
+            // },
+            /*   submitHandler: function(form) {
+                jQuery('.popup_form').removeClass('active');
+                var email=jQuery('#email').val();
+                var name=jQuery('#name').val();
+                var job_title=jQuery('#job_title').val();
+                var msg=jQuery('#Message').val();
+                var company=jQuery('#company').val();
+                var form_check=jQuery('#form_check').val();
+                console.log(email,name,job_title,msg)
+
+                $.ajax({
+                    url: 'https://dev01.webstickprojects.co.il/Lightbits/mail.php',
+                    type: 'POST',
+                    data: {name:name,email:email,job_title:job_title,Message:msg,company:company,form_check:form_check},
+                    success: function(data) {
+                        console.log(data)
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }
+                });
+
+                jQuery('.thankyou_popup').addClass('active');
+                return false;
+            }*/
+
+        // });
+
+        document.addEventListener( 'wpcf7mailsent', function( event ) {
+            jQuery('.popup_form').removeClass('active');
+            jQuery('.thankyou_popup').addClass('active');
+        }, false );
+    }
+
+    //    jQuery('.popup_form .poupform_content form').on('submit',function(){
+    //
+    //
+    //
+    //    });
+    /* mobile menu */
+    jQuery('.menu').click(function(){
+        jQuery(this).toggleClass('active');
+        jQuery('.menu-and-btns').toggleClass('active');
+    })
+
+    /* Mask Animation */
+    jQuery(function(){
+        var $elems = jQuery('.mask_blog,.animation_section');
+        var winheight = jQuery(window).height();
+        var fullheight = jQuery(document).height();
+        jQuery(window).scroll(function(){
+            animate_elems();
+        });
+        jQuery(window).load(function(){
+            animate_elems();
+        })
+        function animate_elems() {
+            wintop = jQuery(window).scrollTop(); // calculate distance from top of window
+
+            // loop through each item to check when it animates
+            $elems.each(function(){
+                $elm = jQuery(this);
+
+                if($elm.hasClass('animated')) { return true; } // if already animated skip to the next item
+
+                topcoords = $elm.offset().top; // element's distance from top of page in pixels
+
+                if(wintop > (topcoords - (winheight*.90))) {
+                    // animate when top of the window is 3/4 above the element
+                    $elm.addClass('animated');
+                    $elm.children('.mask-anim').addClass('is-visible')
+                }
+            });
+        }
+    });
+
+    /* SCROLL ANIMATION */
+
+    jQuery.fn.visible = function(partial) {
+
+        var $t            = jQuery(this),
+            $w            = jQuery(window),
+            viewTop       = $w.scrollTop(),
+            viewBottom    = viewTop + $w.height(),
+            _top          = $t.offset().top,
+            _bottom       = _top + $t.height(),
+            compareTop    = partial === true ? _bottom : _top,
+            compareBottom = partial === true ? _top : _bottom;
+
+        return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+    };
+
+    var win = jQuery(window);
+    var allMods = jQuery(".section_08 .box");
+    win.scroll(function(event) {
+        allMods.each(function(i, el) {
+            var el = jQuery(el);
+            if (el.visible(true)) {
+                setTimeout(function(){
+                    el.addClass("come-in"); 
+                },i*100);
+            } 
+        });
+    });
+
+    win.scroll(function(event) {
+        allMods.each(function(i, el) {
+            var el = jQuery(el);
+            if (el.visible(true)) {
+                setTimeout(function(){
+                    el.addClass("come-in"); 
+                },i*100);
+            } 
+        });
+    });
+
+
+
+}); 
+if(jQuery(window).width() > 768){
+
+    /* Common */
+
+    /*
+
+    jQuery.stellar({
+        horizontalScrolling: false,
+        scrollProperty: "scroll",
+        verticalOffset: 0,
+        horizontalOffset: 0,
+
+    })
+*/
+
+
+    jQuery(window).scroll(function() {
+        var scrollTop = jQuery(this).scrollTop();
+
+        jQuery('#cover .wrapper').css({
+            opacity: function() {
+                var elementHeight = jQuery(this).height();
+                return 1 + (elementHeight - scrollTop) / elementHeight;
+            }
+        });
+    });
+
+}
+
+if(jQuery('.contact_page').length > 0){
+
+    /*    var map;
+    var map_1;
+    var map_2;
+    var style_ = [
+        {
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#f5f5f5"
+                }
+            ]
+        },
+        {
+            "elementType": "labels.icon",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#616161"
+                }
+            ]
+        },
+        {
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                    "color": "#f5f5f5"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.land_parcel",
+            "elementType": "labels",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.land_parcel",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#bdbdbd"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#eeeeee"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "labels.text",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#757575"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.business",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#e5e5e5"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "labels.text",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#9e9e9e"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#ffffff"
+                }
+            ]
+        },
+        {
+            "featureType": "road.arterial",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#757575"
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#dadada"
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#616161"
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "elementType": "labels",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#9e9e9e"
+                }
+            ]
+        },
+        {
+            "featureType": "transit.line",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#e5e5e5"
+                }
+            ]
+        },
+        {
+            "featureType": "transit.station",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#eeeeee"
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#c9c9c9"
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#9e9e9e"
+                }
+            ]
+        }
+    ];
+    var latlng_1 = {lat: 37.339627, lng: -121.9233439};
+    var latlng_2 = {lat: 32.1618096, lng: 34.9327266}; 
+    var latlng_3 = {lat: 32.8200129, lng: 34.9964143};
+    var image = 'images/pin.png';
+    function initMap() {
+        map_1 = new google.maps.Map(document.getElementById('map_1'), {
+            center: latlng_1,
+            zoom: 13,
+            styles: style_
+        });
+        map_2 = new google.maps.Map(document.getElementById('map_2'), {
+            center: latlng_2,
+            zoom: 13,
+            styles: style_
+        });
+        map_3 = new google.maps.Map(document.getElementById('map_3'), {
+            center: latlng_3,
+            zoom: 13,
+            styles: style_
+        });
+        var beachMarker = new google.maps.Marker({
+            position: latlng_1,
+            map: map_1,
+            icon: image
+        }); var beachMarker = new google.maps.Marker({
+            position: latlng_2,
+            map: map_2,
+            icon: image
+        });
+        var beachMarker = new google.maps.Marker({
+            position: latlng_3,
+            map: map_3,
+            icon: image
+        });
+    }*/
+
+
+
+}
+
+
+
+jQuery('.thakyou_close').click(function(){
+
+    jQuery('#name').val('');
+    jQuery('#email').val('');
+    jQuery('#job_title').val('');
+    jQuery('#company').val('');
+    jQuery('.contact_form textarea').val('')
+})
+
+
+jQuery(window).load(function(){
+
+    setTimeout(function(){
+        jQuery('#cover h1').addClass('show');
+        jQuery('#cover p').addClass('show');
+        jQuery('#cover span').addClass('show');
+        jQuery('#cover .no_drama').addClass('show');
+
+    },50)
+
+    if(jQuery(window).width() > 768){
+
+        /* Common */
+
+
+        jQuery.stellar({
+            horizontalScrolling: false,
+            scrollProperty: "scroll",
+            verticalOffset: 0,
+            horizontalOffset: 0,
+
+        })
+
+    }
+
+    var sliderContainer = jQuery('.slider-container');
+
+    if( sliderContainer.children().length > 1) {
+        sliderContainer.owlCarousel({
+            items: 1,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            autoplaySpeed: 1200,
+            dotsSpeed: 1200,
+            
+        })
+    }
+})
